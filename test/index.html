@@ -6,7 +6,7 @@
     <input type="text" id="enterUrl"/>
 		<button onclick="toArrayFunc()">Click Me</button>
 		<script>
-			addImageProcess(src){
+			function addImageProcess(src){
 			  return new Promise((resolve, reject) => {
 			    let img = new Image()
 			    img.onload = () => resolve(img)
