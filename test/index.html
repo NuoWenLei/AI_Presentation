@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html>
+	<body>
+		<canvas id="cv" width="300" height="300"></canvas>
+    <input type="text" id="enterUrl"/>
+		<button onclick="toArrayFunc()">Click Me</button>
+		<script>
+			function toArrayFunc(){
+				var image = new Image();
+				image.src = document.getElementById('enterUrl').value;
+				console.log(image.src);
+				var cv = document.getElementById('cv');
+				var ctx = cv.getContext('2d');
+				var ratio_w = image.naturalWidth/cv.width;
+				var ratio_h = image.naturalHeight/cv.height;
+				var ratio = ratio_w > ratio_h ? ratio_w: ratio_h;
+				ctx.drawImage(image, 0, 0, Math.floor(image.naturalWidth/ratio), Math.floor(image.naturalHeight/ratio));
+				console.log(ctx.getImageData(0,0,cv.width,cv.height).data);
+
+
+				
+			}
+		</script>
+	</body>
+</html>
