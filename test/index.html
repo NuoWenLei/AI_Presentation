@@ -6,10 +6,17 @@
     <input type="text" id="enterUrl"/>
 		<button onclick="toArrayFunc()">Click Me</button>
 		<script>
-			function toArrayFunc(){
-				var image = new Image();
-				image.src = document.getElementById('enterUrl').value;
-				console.log(image.src);
+			addImageProcess(src){
+			  return new Promise((resolve, reject) => {
+			    let img = new Image()
+			    img.onload = () => resolve(img)
+			    img.onerror = "bad"
+			    img.src = src
+			  })
+			}
+			async function toArrayFunc(){
+				var image = await addImageProcess(document.getElementById('enterUrl').value)
+				console.log(image.naturalWidth);
 				var cv = document.getElementById('cv');
 				var ctx = cv.getContext('2d');
 				var ratio_w = image.naturalWidth/cv.width;
