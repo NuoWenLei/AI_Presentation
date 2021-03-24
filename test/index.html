@@ -8,14 +8,14 @@
 		<script>
 			function addImageProcess(src){
 			  return new Promise((resolve, reject) => {
-			    let img = new Image()
-			    img.onload = () => resolve(img)
-			    img.onerror = "bad"
-			    img.src = src
+			    let img = new Image();
+			    img.onload = () => resolve(img);
+			    img.onerror = "bad";
+			    img.src = src;
 			  })
 			}
 			async function toArrayFunc(){
-				var image = await addImageProcess(document.getElementById('enterUrl').value)
+				var image = await addImageProcess(document.getElementById('enterUrl').value);
 				console.log(image.naturalWidth);
 				var cv = document.getElementById('cv');
 				var ctx = cv.getContext('2d');
